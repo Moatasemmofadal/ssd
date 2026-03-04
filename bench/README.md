@@ -101,8 +101,8 @@ export TRITON_CACHE_DIR=/scratch/$USER/triton_cache
 export TORCHINDUCTOR_CACHE_DIR=/scratch/$USER/torchinductor_cache
 ```
 
-If a run crashes or you Ctrl-C, stale worker processes can leak semaphores/shared memory and break the next launch.
-Before rerunning, kill stale processes and verify GPUs are clean:
+If a run crashes or you Ctrl-C, stale worker processes can linger and hold GPUs.
+Before rerunning, kill them and verify GPUs are free:
 
 ```bash
 pkill -9 -f "bench.py|vllm.entrypoints|sglang.launch_server|VLLM::|sglang::"

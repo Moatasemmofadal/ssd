@@ -160,7 +160,26 @@ class LLMEngine:
                     self.draft_ps.join(timeout=2)
         except Exception:
             pass
-        # 5) Force-exit current process if requested
+        # 5) Kill resource tracker so it doesn't print spurious warnings,
+        #    then clean up POSIX semaphores ourselves before hard exit.
+        try:
+            import signal
+            from multiprocessing.resource_tracker import _resource_tracker
+            if _resource_tracker._pid is not None:
+                os.kill(_resource_tracker._pid, signal.SIGKILL)
+                os.waitpid(_resource_tracker._pid, 0)
+        except Exception:
+            pass
+        try:
+            from pathlib import Path
+            for sem in Path("/dev/shm").glob("sem.*"):
+                try:
+                    sem.unlink()
+                except OSError:
+                    pass
+        except Exception:
+            pass
+        # 6) Force-exit current process if requested
         if hard:
             os._exit(0)
 

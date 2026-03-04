@@ -33,39 +33,36 @@ source .venv/bin/activate
 python -c "from ssd import LLM; print('ok')"
 ```
 
-Set paths, ideally with environment variables. 
+Set paths via environment variables. `SSD_HF_CACHE` should point to the HuggingFace **hub** directory — this is the directory that contains `models--org--name/` subdirectories (e.g. `/data/huggingface/hub`, not `/data/huggingface/`). `SSD_DATASET_DIR` should point to the directory containing the dataset subdirectories (`humaneval/`, `alpaca/`, etc).
 
 ```bash
-# SSD runtime
 export SSD_HF_CACHE=/path/to/huggingface/hub
 export SSD_DATASET_DIR=/path/to/processed_datasets
 export SSD_CUDA_ARCH=9.0   # 9.0=H100, 8.0=A100, 8.9=L40/4090
-
-# scripts/get_data_from_hf.py writes to $HF_DATASETS_CACHE/processed_datasets
-# set this to the parent directory of SSD_DATASET_DIR
-export HF_DATASETS_CACHE=/path/to
 ```
 
-### Download models + datasets 
+### Download models + datasets
 
-Get the Llama/Qwen models and datasets we use in our benchmarks and chats. 
+If you already have the models downloaded via `huggingface-cli` or similar, you can skip straight to datasets — just make sure `SSD_HF_CACHE` points to the right place. The download scripts require the `scripts` extra: `uv sync --extra scripts`.
 
 ```bash
 # models (uses SSD_HF_CACHE)
 python scripts/download_from_hf.py llama
 
-# datasets
+# datasets (writes to $HF_DATASETS_CACHE/processed_datasets)
+export HF_DATASETS_CACHE=/path/to  # parent of SSD_DATASET_DIR
 python scripts/get_data_from_hf.py --num-samples 10000
 ```
 
-Ensure `SSD_HF_CACHE` and `SSD_DATASET_DIR` point to where these assets were written.
-
 ## Usage
 
-Run benchmark commands from `bench/`. Use `--all` for full eval across the four datasets. Be sure to use `python -O` for benchmarking to disable debug overhead.
+Run benchmark commands from inside the `bench/` directory. Use `--all` for full eval across the four datasets. Use `python -O` for benchmarking to disable debug overhead. `--numseqs` is per-dataset, so `--numseqs 128 --all` runs 128 × 4 = 512 prompts total.
+
 Large target (Llama-3 70B, Qwen-3 32B) runs take a few minutes for load/warmup/compile before token generation starts.
 
 ```bash
+cd bench
+
 # AR — Llama 70B, 4 GPUs
 python -O bench.py --llama --size 70 --gpus 4 --b 1 --temp 0 --numseqs 128 --output_len 512 --all
 
